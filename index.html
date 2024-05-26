@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growing Roses</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            background: linear-gradient(to bottom, #000033, #000);
+
+            overflow: hidden; /* Prevent petals from overflowing */
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        #enterButton {
+            /* background-image: url(https://thumb.photo-ac.com/9d/9d09a0995a6746024073ddf0d44546d4_w.jpeg); */
+            /* background-size: cover;
+            background-position: center; */
+            background-color: aquamarine;
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            top: 20px;
+            left: 40vw;
+            right: auto;
+            padding: 10px 10px;
+            font-size: 20px;
+            cursor: pointer;
+            border: 7px solid green;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        #enterButton:hover {
+            background-color: #d9d9d9; 
+        }
+
+        .roseContainer {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            
+            width: 100vw;
+            height: 60vh; /* Adjust the height */
+            
+            transition: all 5s ease; /* Transition for rising effect */
+        }
+
+        .roseContainer img {
+            width: 2px; /* Adjust the size */
+            height: auto; /* Adjust the height */
+            margin: 50px; /* Add some margin between images */
+            
+            transition: all 5s ease; /* Transition for rising effect */
+        }
+
+        #bouquet{
+            height: auto;
+            width: 4px;
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-100vh) rotateZ(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotateZ(720deg);
+                opacity: 1;
+            }
+        }
+
+        .petal {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            /* Remove background properties */
+            
+            animation: petalFall 10s infinite linear;
+        }
+
+
+        @keyframes growAnimation {
+            0% {
+                transform: translateY(-90px) scale(0.1);
+            }
+            100% {
+                transform: translateY(-250px) scale(40); /* Adjust the scale */
+            }
+        }
+
+        .grow {
+            animation: growAnimation 5s forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="enterButton">
+            CLick Me If You Are Ready For a Suprise 
+        </button>
+       
+        <div class="roseContainer">
+            <!-- <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 1">
+            <img  alt="Rose 2"> -->
+            <!-- <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 3">
+            <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 4">
+            <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 5">-->
+            <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 6">
+            <img src="https://png.pngtree.com/png-vector/20240124/ourmid/pngtree-red-roses-with-swirls-lovely-flowers-png-image_11538202.png" alt="Rose 7">
+            <img id="bouquet" src="https://png.pngtree.com/png-clipart/20210711/original/pngtree-rose-bouquet-simulation-flower-arrangement-png-image_6524995.jpg" alt="Rose 8">
+            <img src="https://png.pngtree.com/png-vector/20240124/ourmid/pngtree-red-roses-with-swirls-lovely-flowers-png-image_11538202.png" alt="Rose 9"> 
+            <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 10"> 
+             
+        </div>
+    </div>
+    <script>
+        document.getElementById('enterButton').addEventListener('click', function() {
+            document.querySelector('.roseContainer').style.height = 'auto'; // Make room for the roses to rise
+            document.querySelectorAll('.roseContainer img').forEach(function(rose) {
+                rose.classList.add('grow');
+            });
+
+            // Function to generate petals
+            function generatePetal() {
+                const petal = document.createElement('img');
+                petal.classList.add('petal');
+                petal.src = 'https://www.transparentpng.com/thumb/rose/cV0Yyh-rose-clipart-flowers-photo.png'; // Set the petal image source
+                petal.style.left = Math.random() * window.innerWidth + 'px';
+                document.body.appendChild(petal);
+
+                // Remove the petal after it falls off the screen
+                setTimeout(function() {
+                    petal.remove();
+                }, 10000); // Adjust the time as needed
+
+                // Generate the next petal after a random delay
+                setTimeout(generatePetal, Math.random() * 2000); // Adjust the delay range as needed
+            }
+
+            // Start generating petals
+            generatePetal();
+        });
+
+    </script>
+</body>
+</html>
