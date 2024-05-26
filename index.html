@@ -8,6 +8,8 @@
         body {
             margin: 0;
             height: 100vh;
+            width: 100vw;
+            
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -59,7 +61,7 @@
         .roseContainer img {
             width: 1px; /* Adjust the size */
             height: auto; /* Adjust the height */
-            margin: 50px; /* Add some margin between images */
+            margin: 30px; /* Add some margin between images */
             
             transition: all 5s ease; /* Transition for rising effect */
         }
@@ -67,6 +69,7 @@
         #bouquet{
             height: auto;
             width: 7px;
+            margin: 49px;
         }
 
         @keyframes petalFall {
@@ -133,10 +136,27 @@
 
             // Function to generate petals
             function generatePetal() {
+                // Array of image URLs
+                const petalImages = [
+                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-1-1024x977.png',
+                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-2-850x1024.png',
+                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-3-1024x858.png',
+                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-4-1024x902.png',
+                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-5-1024x910.png',
+                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-6-1024x883.png'
+                ];
+
+                // Create a new image element
                 const petal = document.createElement('img');
                 petal.classList.add('petal');
-                petal.src = 'https://www.transparentpng.com/thumb/rose/cV0Yyh-rose-clipart-flowers-photo.png'; // Set the petal image source
+
+                // Set a random image source from the array
+                petal.src = petalImages[Math.floor(Math.random() * petalImages.length)];
+
+                // Set random position
                 petal.style.left = Math.random() * window.innerWidth + 'px';
+
+                // Append the petal to the document body
                 document.body.appendChild(petal);
 
                 // Remove the petal after it falls off the screen
