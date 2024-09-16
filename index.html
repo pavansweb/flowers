@@ -3,176 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Growing Roses</title>
+    <title>Surprise Bouquet</title>
     <style>
         body {
-            margin: 0;
-            height: 100vh;
-            width: 100vw;
-            
+            background-image: url('bg.JPG');
+            background-size: cover;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, #ffe1e1, #ff9d9d);
-
-            overflow: hidden; /* Prevent petals from overflowing */
-        }
-
-        .container {
-            text-align: center;
-        }
-
-        #enterButton {
-            /* background-image: url(https://thumb.photo-ac.com/9d/9d09a0995a6746024073ddf0d44546d4_w.jpeg); */
-            /* background-size: cover;
-            background-position: center; */
-            background-color: aquamarine;
-            width: 150px;
-            height: 150px;
-            position: absolute;
-            top: 20px;
-            left: 30vw;
-            right: auto;
-            padding: 10px 10px;
-            font-size: 20px;
-            cursor: pointer;
-            border: 7px solid green;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            transition: all 0.3s ease;
-        }
-
-        #enterButton:hover {
-            background-color: #d9d9d9; 
-        }
-
-        .roseContainer {
-            display: flex;
             justify-content: center;
-            align-items: flex-end;
-            
-            width: 100vw;
-            height: 60vh; /* Adjust the height */
-            
-            transition: all 5s ease; /* Transition for rising effect */
+            height: 100vh;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+           
         }
 
-        .roseContainer img {
-            width: 1px; /* Adjust the size */
-            height: auto; /* Adjust the height */
-            margin: 30px; /* Add some margin between images */
-            
-            transition: all 5s ease; /* Transition for rising effect */
+        #surprise-btn {
+            padding: 20px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
         }
 
-        #bouquet{
+        #surprise-btn:hover {
+            background-color: #ff4757;
+            transform: scale(1.1);
+        }
+
+        #surprise-container {
+            display: none;
+            position: relative;
+            margin-top: -10rem;
+        }
+
+        .rose-img {
+            max-width: 200px;
+            max-height: 200px;
+            opacity: 0;
+            transition: all 1s ease-in-out;
+        }
+
+        #main-bouquet {
+            width: 600px;
             height: auto;
-            width: 7px;
-            margin: 49px;
-        }
-
-        @keyframes petalFall {
-            0% {
-                transform: translateY(-100vh) rotateZ(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotateZ(720deg);
-                opacity: 1;
-            }
-        }
-
-        .petal {
             position: absolute;
-            width: 30px;
-            height: 30px;
-            /* Remove background properties */
-            
-            animation: petalFall 10s infinite linear;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: all 0.8s ease-in-out;
         }
 
-
-        @keyframes growAnimation {
-            0% {
-                transform: translateY(-90px) scale(0.1);
-            }
-            100% {
-                transform: translateY(-250px) scale(40); /* Adjust the scale */
-            }
+        .rose-pic {
+            width: 120px;
+            height: auto;
+            opacity: 0;
+            transition: all 1.5s ease-in-out;
+            position: absolute;
         }
 
-        .grow {
-            animation: growAnimation 5s forwards;
+        #rose1 {
+            top: 10%;
+            left: 5%;
+            transform: translate(-100px, 0);
+        }
+
+        #rose2 {
+            top: 15%;
+            right: 5%;
+            transform: translate(100px, 0);
+        }
+
+        #rose3 {
+            bottom: 15%;
+            left: 10%;
+            transform: translate(-100px, 100px);
+        }
+
+        #rose4 {
+            bottom: 10%;
+            right: 10%;
+            transform: translate(100px, 100px);
+        }
+
+        #rose5 {
+            bottom: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+        }
+
+        #rose6 {
+            top: 40%;
+            right: 50%;
+            transform: translate(50%, -50%);
+            width: 150px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <button id="enterButton">
-            CLick Me If You Are Ready For a Suprise 
-        </button>
-       
-        <div class="roseContainer">
-            <!-- <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 1">
-            <img  alt="Rose 2"> -->
-            <!-- <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 3">
-            <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 4">
-            <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 5">-->
-            <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 6">
-            <img src="https://png.pngtree.com/png-vector/20240124/ourmid/pngtree-red-roses-with-swirls-lovely-flowers-png-image_11538202.png" alt="Rose 7">
-            <img id="bouquet" src="https://png.pngtree.com/png-clipart/20210711/original/pngtree-rose-bouquet-simulation-flower-arrangement-png-image_6524995.jpg" alt="Rose 8">
-            <img src="https://png.pngtree.com/png-vector/20240124/ourmid/pngtree-red-roses-with-swirls-lovely-flowers-png-image_11538202.png" alt="Rose 9"> 
-            <img src="https://i.imgur.com/CNu3teT.png" alt="Rose 10"> 
-             
-        </div>
+    <button id="surprise-btn">Click me for a surprise!</button>
+
+    <div id="surprise-container">
+        <img id="main-bouquet" src="pngtree-rose-bouquet-simulation-flower-arrangement-png-image_6524995-transformed.png" alt="Main Bouquet">
+        <img id="rose1" class="rose-pic" src="images-removebg-preview.png" alt="Rose 1">
+        <img id="rose2" class="rose-pic" src="images-removebg-preview.png" alt="Rose 2">
+        <img id="rose3" class="rose-pic" src="https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-3-1024x858.png" alt="Rose 3">
+        <img id="rose4" class="rose-pic" src="https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-4-1024x902.png" alt="Rose 4">
+        <img id="rose5" class="rose-pic" src="https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-5-1024x910.png" alt="Rose 5">
+        <img id="rose6" class="rose-pic" src="https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-6-1024x883.png" alt="Rose 6">
     </div>
+
     <script>
-        document.getElementById('enterButton').addEventListener('click', function() {
-            document.querySelector('.roseContainer').style.height = 'auto'; // Make room for the roses to rise
-            document.querySelector('#enterButton').style.display = 'none';
-            document.querySelectorAll('.roseContainer img').forEach(function(rose) {
-                rose.classList.add('grow');
-            });
-
-            // Function to generate petals
-            function generatePetal() {
-                // Array of image URLs
-                const petalImages = [
-                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-1-1024x977.png',
-                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-2-850x1024.png',
-                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-3-1024x858.png',
-                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-4-1024x902.png',
-                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-5-1024x910.png',
-                    'https://www.onlygfx.com/wp-content/uploads/2018/08/6-pink-rose-6-1024x883.png'
-                ];
-
-                // Create a new image element
-                const petal = document.createElement('img');
-                petal.classList.add('petal');
-
-                // Set a random image source from the array
-                petal.src = petalImages[Math.floor(Math.random() * petalImages.length)];
-
-                // Set random position
-                petal.style.left = Math.random() * window.innerWidth + 'px';
-
-                // Append the petal to the document body
-                document.body.appendChild(petal);
-
-                // Remove the petal after it falls off the screen
-                setTimeout(function() {
-                    petal.remove();
-                }, 10000); // Adjust the time as needed
-
-                // Generate the next petal after a random delay
-                setTimeout(generatePetal, Math.random() * 2000); // Adjust the delay range as needed
-            }
-
-            // Start generating petals
-            generatePetal();
+        document.getElementById('surprise-btn').addEventListener('click', function () {
+            const container = document.getElementById('surprise-container');
+            container.style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('main-bouquet').style.transform = 'translate(-50%, -50%) scale(1)';
+                document.getElementById('main-bouquet').style.opacity = '1';
+                document.getElementById('rose1').style.opacity = '1';
+                document.getElementById('rose1').style.transform = 'translate(0, 0)';
+                document.getElementById('rose2').style.opacity = '1';
+                document.getElementById('rose2').style.transform = 'translate(0, 0)';
+                document.getElementById('rose3').style.opacity = '1';
+                document.getElementById('rose3').style.transform = 'translate(0, 0)';
+                document.getElementById('rose4').style.opacity = '1';
+                document.getElementById('rose4').style.transform = 'translate(0, 0)';
+                document.getElementById('rose5').style.opacity = '1';
+                document.getElementById('rose6').style.opacity = '1';
+            }, 300);
+            document.getElementById('surprise-btn').style.display='none'
         });
-
     </script>
 </body>
 </html>
